@@ -3,5 +3,3 @@
 <b>If gulp is not installed globally:</b> npm i gulp --global
 <br/>
 <b>AND than use</b> npm install
-<br/><br/>
-<img src="app/images/main.png"/>
