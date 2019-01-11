@@ -1,0 +1,14 @@
+/*
+* Third Party
+*/
+// @import "../../node_modules/normalize.css/normalize.css";
+// @import "../../node_modules/bootstrap/dist/css/bootstrap.css"; // v4
+@import "../../node_modules/bootstrap3/dist/css/bootstrap.css"; // v3
+
+/*
+* Custom
+*/
+@import "../../node_modules/owl.carousel/dist/assets/owl.carousel.min.css";
+@import "../../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css";
+
+@import "partials/app";
