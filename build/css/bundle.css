@@ -1,0 +1,10 @@
+/*
+* Third Party
+*/
+@import url(../../node_modules/bootstrap3/dist/css/bootstrap.css);
+/*
+* Custom
+*/
+body {
+  color: #363636;
+  background: #f0f0f0; }
