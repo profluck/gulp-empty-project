@@ -39,17 +39,6 @@ let path = {
     clean: './build'
 };
 
-// SERVER CONFIG
-let config = {
-    server: {
-        baseDir: pathNode.normalize('build')
-    },
-    tunnel: true,
-    host: 'localhost',
-    port: 9005,
-    logPrefix: "Live Reload"
-};
-
 // HTML
 gulp.task('html:build', function () {
     gulp.src(path.src.html)
@@ -69,7 +58,8 @@ gulp.task('js:build', function () {
         // prod scripts
         .pipe(uglify())
         .pipe(rename('bundle.min.js'))
-        .pipe(gulp.dest(path.build.js));
+        .pipe(gulp.dest(path.build.js))
+        .pipe(reload({stream: true}));
 });
 
 // SCSS task
@@ -86,13 +76,15 @@ gulp.task('style:build', function () {
             console.log(details.name + ' : ' + details.stats.minifiedSize);
         }))
         .pipe(rename('bundle.min.css'))
-        .pipe(gulp.dest(path.build.css));
+        .pipe(gulp.dest(path.build.css))
+        .pipe(reload({stream: true}));
 });
 
 // FONTS
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
         .pipe(gulp.dest(path.build.fonts))
+        .pipe(reload({stream: true}));
 });
 
 // COMBINE TASK
@@ -119,14 +111,25 @@ gulp.task('watch', function(cb) {
     });
 });
 
-// WEB SERVER
-gulp.task('server', function () {
-    browserSync(config);
-});
-
 // CLEANER
 gulp.task('clean', function (cb) {
     rimraf(path.clean, cb);
+});
+
+// SERVER CONFIG
+let config = {
+    server: {
+        baseDir: pathNode.normalize('build')
+    },
+    tunnel: false,
+    host: 'localhost',
+    port: 9005,
+    logPrefix: "Live Reload"
+};
+
+// WEB SERVER
+gulp.task('server', function () {
+    browserSync(config);
 });
 
 // DEFAULT TASK
